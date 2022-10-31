@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { UpdatePageComponent } from './pages/update-page/update-page.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
+import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     CreatePageComponent,
-    UpdatePageComponent
+    UpdatePageComponent,
+    UserPageComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
