@@ -8,6 +8,9 @@ import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { UpdatePageComponent } from './pages/update-page/update-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -20,7 +23,12 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
