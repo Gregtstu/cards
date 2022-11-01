@@ -1,14 +1,22 @@
-.car-toggle div.active {
-  background: #030305;
-  color: #FFFFFF;
-}
-.car-toggle{
-  border: 1px solid #030305;
-  cursor: pointer;
-}
+.wrapper {
 
-quill-view-html{
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  margin: 0 auto;
+
+
+  .car-toggle div.active {
+    background: #030305;
+    color: #FFFFFF;
+  }
+
+  .car-toggle {
+    border: 1px solid #030305;
+    cursor: pointer;
+  }
+
+  quill-view-html {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }

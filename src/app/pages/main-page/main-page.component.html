@@ -1,21 +1,26 @@
 <div class="container pt-5">
   <h3 class="text-center mt-5 mb-5">Контроль работы юристов</h3>
-  <div class="car-toggle col-12 p-0 d-flex flex-row">
-    <input class="form-control col-6" type="text" placeholder="Поиск по логину специалиста" aria-label="default input example" [(ngModel)]="userLogin">
-    <div class="col-3" [ngClass]="{active: category === 'Все дела'}" (click)="toggleCategory('Все дела')">Все дела</div>
-    <div class="col-3" [ngClass]="{active: category === 'Выполненные'}" (click)="toggleCategory('Выполненные')">Выполненные</div>
-  </div>
-  <table class="table">
-    <thead class="table-dark">
-    <tr>
-      <th>фото</th>
-      <th>Информация о сотруднике</th>
-      <th>Настройки</th>
-    </tr>
-    </thead>
-    <tbody class="table-light">
-    <tr
-      *ngFor="
+  <div class="wrapper">
+    <div class="car-toggle col-12 p-0 d-flex flex-row ">
+      <input class="form-control col-5" type="text" placeholder="Поиск по логину"
+             aria-label="default input example" [(ngModel)]="userLogin">
+      <div class="col-3" [ngClass]="{active: category === 'Все дела'}" (click)="toggleCategory('Все дела')">Все дела
+      </div>
+      <div class="col-4" [ngClass]="{active: category === 'Выполненные'}" (click)="toggleCategory('Выполненные')">
+        Выполненные
+      </div>
+    </div>
+    <table class="table">
+      <thead class="table-dark">
+      <tr>
+        <th>&#9881;</th>
+        <th>Информация</th>
+        <th>Фото</th>
+      </tr>
+      </thead>
+      <tbody class="table-light">
+      <tr
+        *ngFor="
           let user of data | search : userLogin
             | paginate
               : {
@@ -24,40 +29,44 @@
                   totalItems: count
                 };
         "
-    >
-      <th scope="row">
-        <quill-view-html content="{{user.docCode}}"></quill-view-html>
-      </th>
-      <td [ngStyle]="{
+      >
+        <th scope="row">
+          <button class="btn btn-danger me-2 mb-2" (click)="remove(user.id)">
+            <i class="bi bi-calendar-x-fill"></i>
+          </button>
+          <button class="btn btn-info me-2 mb-2" [routerLink]="['/update', user.id]">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-success me-2 mb-2" (click)="complited(user.id)" [disabled]="user.isSpecial">
+            <i class="bi bi-file-check-fill"></i>
+          </button>
+
+
+        </th>
+        <td [ngStyle]="{
       background: user.isSpecial ? 'green' : '#eee'
       }">
-        <p><b>ФИО:</b> {{user.author.fio}}</p>
-        <p><b>Логин:</b> {{user.author.account}}</p>
-        <p><b>Должность:</b> {{user.author.post}}</p>
-        <p><b>Работает над:</b> {{user.docName}}</p>
-        <p><b>Приступил к работе:</b> {{user.docDate}}</p>
-      </td>
-      <td class="m-auto">
-        <button class="btn btn-danger me-2 mb-2" (click)="remove(user.id)">
-          <i class="bi bi-calendar-x-fill"></i>
-        </button>
-        <button class="btn btn-info me-2 mb-2" [routerLink]="['/update', user.id]">
-          <i class="bi bi-pencil-square"></i>
-        </button>
-        <button class="btn btn-success me-2 mb-2" (click)="complited(user.id)" [disabled]="user.isSpecial">
-          <i class="bi bi-file-check-fill"></i>
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="d-flex jusify-content-center">
-    <pagination-controls
-      previousLabel="&larr;"
-      nextLabel="&rarr;"
-      (pageChange)="onTableDataChange($event)"
-      aria-label="Search results pages"
-    >
-    </pagination-controls>
+          <p><b>ФИО:</b> {{user.author.fio}}</p>
+          <p><b>Логин:</b> {{user.author.account}}</p>
+          <p><b>Должность:</b> {{user.author.post}}</p>
+          <p><b>Работает над:</b> {{user.docName}}</p>
+          <p><b>Приступил к работе:</b> {{user.docDate}}</p>
+        </td>
+        <td class="m-auto">
+          <quill-view-html content="{{user.docCode}}" style="padding:0" ></quill-view-html>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="d-flex jusify-content-center">
+      <pagination-controls
+        previousLabel="&larr;"
+        nextLabel="&rarr;"
+        (pageChange)="onTableDataChange($event)"
+        aria-label="Search results pages"
+      >
+      </pagination-controls>
+    </div>
+
   </div>
 </div>
