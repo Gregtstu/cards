@@ -8,7 +8,7 @@ import {LocalStorageService} from "../../services/local-storage.service";
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-
+  public category: string = 'Все дела';
   public data!: any;
   public page: number = 1;
   public count: number = 0;
@@ -48,5 +48,11 @@ export class MainPageComponent implements OnInit {
     this.localStorageServ.compliteLS(id);
     alert('Помечено, как выполненное!');
     this.getUsers('users');
+  }
+
+  toggleCategory(category: string) {
+    this.category = category;
+    if(this.category == 'Все дела') this.getUsers('users');
+    else this.data = this.data.filter((item:IUsers) => item.isSpecial == true);
   }
 }
