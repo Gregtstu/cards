@@ -12,7 +12,7 @@ export class MainPageComponent implements OnInit {
   public data!: any;
   public page: number = 1;
   public count: number = 0;
-  public tableSize: number = 5;
+  public tableSize: number = 3;
   public tableSizes: number[] = [3, 6, 9, 12];
 
 
@@ -36,12 +36,6 @@ export class MainPageComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
     this.getUsers('users');
-  }
-
-  category: string = 'sport';
-  toggleCategory(category: string) {
-    this.category = category;
-    this.ngOnInit();
   }
 
   remove(id:string) {

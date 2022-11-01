@@ -1,6 +1,4 @@
-``# Cards
+# Тестовый проект для контроля работы юристов
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
-
-## Development server
+Демо этого проекта можно посмотреть [здесь](https://gregtstu.github.io/test-hosting/)
 

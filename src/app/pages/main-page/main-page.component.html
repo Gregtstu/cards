@@ -1,10 +1,5 @@
 <div class="container pt-5">
   <h3 class="text-center mt-5 mb-5">Контроль работы юристов</h3>
-  <div class="car-toggle col-12 p-0 d-flex flex-row">
-    <input class="form-control col-6" type="text" placeholder="Поиск" aria-label="default input example">
-    <div class="col-3" [ngClass]="{active: category === 'sport'}" (click)="toggleCategory('sport')">Все работы</div>
-    <div class="col-3" [ngClass]="{active: category === 'luxury'}" (click)="toggleCategory('luxury')">Не выполненные</div>
-  </div>
   <table class="table">
     <thead class="table-dark">
     <tr>
@@ -28,7 +23,9 @@
       <th scope="row">
         <quill-view-html content="{{user.docCode}}"></quill-view-html>
       </th>
-      <td>
+      <td [ngStyle]="{
+      background: user.isSpecial ? 'green' : '#eee'
+      }">
         <p><b>ФИО:</b> {{user.author.fio}}</p>
         <p><b>Логин:</b> {{user.author.account}}</p>
         <p><b>Должность:</b> {{user.author.post}}</p>
@@ -36,13 +33,13 @@
         <p><b>Приступил к работе:</b> {{user.docDate}}</p>
       </td>
       <td class="m-auto">
-          <button class="btn btn-danger" (click)="remove(user.id)">
-            <i class="bi bi-calendar-x-fill"></i>
-          </button>
-          <button class="btn btn-info mx-2" [routerLink]="['/update', user.id]">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-        <button class="btn btn-success" (click)="complited(user.id)" [disabled]="user.isSpecial">
+        <button class="btn btn-danger me-2 mb-2" (click)="remove(user.id)">
+          <i class="bi bi-calendar-x-fill"></i>
+        </button>
+        <button class="btn btn-info me-2 mb-2" [routerLink]="['/update', user.id]">
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <button class="btn btn-success me-2 mb-2" (click)="complited(user.id)" [disabled]="user.isSpecial">
           <i class="bi bi-file-check-fill"></i>
         </button>
       </td>
