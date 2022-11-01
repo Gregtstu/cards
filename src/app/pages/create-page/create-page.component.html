@@ -7,7 +7,10 @@
              id="exampleInputEmail1"
              formControlName="fio"
       >
-      <div id="emailHelp" class="form-text">Вы не ввели ФИО специалиста</div>
+      <div *ngIf="form.get('author.fio')?.errors?.['required']">
+        <small class="form-text"><b>*Обязательное</b> для заполнения поле</small>
+      </div>
+
     </div>
     <div class="mb-3">
       <label for="login" class="form-label">Логин специалиста</label>
@@ -16,7 +19,9 @@
              id="login"
              formControlName="account"
       >
-      <div id="login-error" class="form-text">Вы не ввели логин специалиста</div>
+      <div *ngIf="form.get('author.account')?.errors?.['required']">
+        <small class="form-text"><b>*Обязательное</b> для заполнения поле</small>
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail2" class="form-label">Занимаемая должность</label>
@@ -25,7 +30,10 @@
              id="exampleInputEmail2"
              formControlName="post"
       >
-      <div class="form-text">Вы не ввели должность специалиста</div>
+      <div *ngIf="form.get('author.post')?.errors?.['required']">
+        <small class="form-text"><b>*Обязательное</b> для заполнения поле</small>
+      </div>
+
     </div>
   </div>
   <div class="mb-3">
@@ -35,7 +43,9 @@
            id="exampleInputEmail4"
            formControlName="address"
     >
-    <div class="form-text">Вы не ввели адрес проживания специалиста</div>
+    <div class="form-text" *ngIf="form.get('address')?.errors?.['required']">
+      <small class="form-text"><b>*Обязательное</b> для заполнения поле</small>
+    </div>
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail5" class="form-label">Краткое содержание документа в работе</label>
@@ -44,14 +54,18 @@
            id="exampleInputEmail5"
            formControlName="docName"
     >
-    <div class="form-text">Вы не ввели содержание документа</div>
+    <div class="form-text" *ngIf="form.get('docName')?.errors?.['required']">
+      <small class="form-text"><b>*Обязательное</b> для заполнения поле</small>
+    </div>
   </div>
   <div class="mb-3 form-check form-group">
     <input type="radio" class="form-check-input" id="exampleCheck1" name="docType" formControlName="docType" value="Заявление">
     <label class="form-check-label me-5" for="exampleCheck1">Заявление</label>
     <input type="radio" class="form-check-input" id="exampleCheck2" name="docType" formControlName="docType" value="Сертификат">
     <label class="form-check-label" for="exampleCheck2">Сертификат</label>
-    <div class="form-text">Вы не выбрали вид документа</div>
+    <div class="form-text" *ngIf="form.get('docType')?.errors?.['required']">
+      <small class="form-text"><b>*Обязательное</b> выбрать вид документа</small>
+    </div>
   </div>
   <div class="mb-3">
     <quill-editor class="col-12 text-center h3" [modules]="quillConfigImg"
@@ -60,6 +74,9 @@
     >
 
     </quill-editor>
+    <div class="form-text" *ngIf="form.get('docCode')?.errors?.['required']">
+      <small class="form-text"><b>*Обязательное</b> добавьте фото</small>
+    </div>
   </div>
-  <button type="submit" class="btn btn-secondary col-12">Добавить юриста</button>
+  <button type="submit" class="btn btn-secondary col-12" [disabled]="form.invalid">Добавить юриста</button>
 </form>
