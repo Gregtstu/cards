@@ -49,6 +49,17 @@ export class LocalStorageService {
     localStorage.setItem('users', JSON.stringify(data));
   }
 
+  compliteLS(id: string) {
+    let data: IUsers[] = JSON.parse(localStorage.getItem('users') || '[]');
+    data.map(item => {
+      if (item.id == id && item.isSpecial === false) {
+        item.isSpecial = true;
+      }
+    });
+    localStorage.setItem('users', JSON.stringify(data));
+  }
+
+
 }
 
 

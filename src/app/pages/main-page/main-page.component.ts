@@ -50,7 +50,9 @@ export class MainPageComponent implements OnInit {
     this.getUsers('users');
   }
 
-  edit(id:string) {
-    console.log(id)
+  complited(id:string) {
+    this.localStorageServ.compliteLS(id);
+    alert('Помечено, как выполненное!');
+    this.getUsers('users');
   }
 }
