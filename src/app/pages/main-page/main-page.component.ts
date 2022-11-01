@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
   public count: number = 0;
   public tableSize: number = 3;
   public tableSizes: number[] = [3, 6, 9, 12];
+  public userLogin: string = '';
 
 
   constructor(private localStorageServ:LocalStorageService) {

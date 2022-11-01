@@ -11,7 +11,8 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { SearchPipe } from './settings/search.pipe'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { QuillModule } from 'ngx-quill'
     CreatePageComponent,
     UpdatePageComponent,
     UserPageComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <h3 class="text-center mt-5 mb-5">Контроль работы юристов</h3>
   <div class="car-toggle col-12 p-0 d-flex flex-row">
-    <input class="form-control col-6" type="text" placeholder="Поиск" aria-label="default input example">
+    <input class="form-control col-6" type="text" placeholder="Поиск по логину специалиста" aria-label="default input example" [(ngModel)]="userLogin">
     <div class="col-3" [ngClass]="{active: category === 'Все дела'}" (click)="toggleCategory('Все дела')">Все дела</div>
     <div class="col-3" [ngClass]="{active: category === 'Выполненные'}" (click)="toggleCategory('Выполненные')">Выполненные</div>
   </div>
@@ -16,7 +16,7 @@
     <tbody class="table-light">
     <tr
       *ngFor="
-          let user of data
+          let user of data | search : userLogin
             | paginate
               : {
                   itemsPerPage: tableSize,
