@@ -11,6 +11,7 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QuillModule.forRoot(),
 
   ],
   providers: [],

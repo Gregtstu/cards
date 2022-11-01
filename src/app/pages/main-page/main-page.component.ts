@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../../services/api.service";
 import {IUsers} from "../../settings/iusers";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-main-page',
@@ -10,38 +10,37 @@ import {IUsers} from "../../settings/iusers";
 export class MainPageComponent implements OnInit {
 
   public data!: any;
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 3;
-  tableSizes: any = [3, 6, 9, 12];
+  public page: number = 1;
+  public count: number = 0;
+  public tableSize: number = 1;
+  public tableSizes: number[] = [3, 6, 9, 12];
 
-  constructor(private apiServ:ApiService) {
+
+  constructor(private localStorageServ:LocalStorageService) {
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getUsers('users');
   }
 
-  getUsers():void{
-    this.apiServ.getAllUsers()
-      .subscribe({
-        next: (res) => {
-          this.data = res;
-        },
-        error: (err) => {
-          alert('Список пуст! Добавьте новых пользователей!')
-        }
-      });
+  getUsers(user:string):void{
+    this.data =  this.localStorageServ.getLs(user);
   }
 
   onTableDataChange(event: any) {
     this.page = event;
-    this.getUsers();
+    this.getUsers('users');
   }
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.getUsers();
+    this.getUsers('users');
+  }
+
+  category: string = 'sport';
+  toggleCategory(category: string) {
+    this.category = category;
+    this.ngOnInit();
   }
 }

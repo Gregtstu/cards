@@ -1,11 +1,16 @@
-<div class="container">
-  <h3 class="text-center mt-5 mb-5">Все пользователи</h3>
+<div class="container pt-5">
+  <h3 class="text-center mt-5 mb-5">Контроль работы юристов</h3>
+  <div class="car-toggle col-12 p-0 d-flex flex-row">
+    <input class="form-control col-6" type="text" placeholder="Поиск" aria-label="default input example">
+    <div class="col-3" [ngClass]="{active: category === 'sport'}" (click)="toggleCategory('sport')">Sport</div>
+    <div class="col-3" [ngClass]="{active: category === 'luxury'}" (click)="toggleCategory('luxury')">Luxury</div>
+  </div>
   <table class="table">
     <thead class="table-dark">
     <tr>
-      <th>№</th>
-      <th>ID</th>
-      <th>Title</th>
+      <th>фото</th>
+      <th>Информация о сотруднике</th>
+      <th>Настройки</th>
     </tr>
     </thead>
     <tbody class="table-light">
@@ -18,12 +23,22 @@
                   currentPage: page,
                   totalItems: count
                 };
-          let i = index
         "
     >
-      <th scope="row">{{ i }}</th>
-      <td>{{user.id}}</td>
-      <td>{{ user.title }}</td>
+      <th scope="row">
+        <quill-view-html content="{{user.docCode}}"></quill-view-html>
+      </th>
+      <td>
+        <p><b>ФИО:</b>{{user.author.fio}}</p>
+        <p><b>Логин:</b>{{user.author.account}}</p>
+        <p><b>Должность:</b>{{user.author.post}}</p>
+        <p><b>Работает над:</b>{{user.docName}}</p>
+        <p><b>Приступил к работе:</b>11.12.2021</p>
+      </td>
+      <td>
+        <button class="btn btn-danger me-2"><i class="bi bi-calendar-x-fill"></i></button>
+        <button class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+      </td>
     </tr>
     </tbody>
   </table>
@@ -32,6 +47,7 @@
       previousLabel="&larr;"
       nextLabel="&rarr;"
       (pageChange)="onTableDataChange($event)"
+      aria-label="Search results pages"
     >
     </pagination-controls>
   </div>

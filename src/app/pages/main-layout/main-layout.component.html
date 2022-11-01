@@ -1,2 +1,18 @@
-<p>main-layout works!</p>
+<nav class="navbar bg-light fixed-top">
+  <ul class="container-fluid justify-content-between">
+    <li class="btn btn-outline-secondary col-6"
+        [routerLink]="['/']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}"
+    >
+      <a>Список специалистов</a>
+    </li>
+    <li class="btn btn-outline-secondary col-6"
+      [routerLink]="['/create']"
+      routerLinkActive="active"
+    >
+      <a>Добавить специалиста</a>
+    </li>
+  </ul>
+</nav>
 <router-outlet></router-outlet>
