@@ -12,7 +12,7 @@ export class MainPageComponent implements OnInit {
   public data!: any;
   public page: number = 1;
   public count: number = 0;
-  public tableSize: number = 1;
+  public tableSize: number = 5;
   public tableSizes: number[] = [3, 6, 9, 12];
 
 
@@ -42,5 +42,15 @@ export class MainPageComponent implements OnInit {
   toggleCategory(category: string) {
     this.category = category;
     this.ngOnInit();
+  }
+
+  remove(id:string) {
+    this.localStorageServ.removeLs(id);
+    alert('удаление прошло успешно');
+    this.getUsers('users');
+  }
+
+  edit(id:string) {
+    console.log(id)
   }
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 import {LocalStorageService} from "../../services/local-storage.service";
 import {Router} from "@angular/router";
+import {IUsers} from "../../settings/iusers";
+import {IAuthor} from "../../settings/IAuthor";
 
 @Component({
   selector: 'app-create-page',
@@ -36,30 +38,40 @@ export class CreatePageComponent implements OnInit {
   public form!: FormGroup;
 
   constructor(
-    private fb:FormBuilder,
-    private localStorageService:LocalStorageService,
+    private fb: FormBuilder,
+    private localStorageService: LocalStorageService,
     private rout: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       author: this.fb.group({
         account: ['', Validators.required],
         fio: ['', Validators.required],
-        post:['', Validators.required],
+        post: ['', Validators.required],
       }),
-      docCode:['', Validators.required],
-      docName:['', Validators.required],
-      address:['', Validators.required],
-      docType:['', Validators.required],
+      docCode: ['', Validators.required],
+      docName: ['', Validators.required],
+      address: ['', Validators.required],
+      docType: ['', Validators.required],
 
     })
   }
 
-  submit():void{
-    console.log(this.form.value);
-    if(this.form.invalid) return;
-    this.localStorageService.addLs(this.form.value);
+  submit(): void {
+    if (this.form.invalid) return;
+    const obj: IUsers = {
+      id: String((Math.random() * 1000).toFixed(9)),
+      author: this.form.value.author,
+      docCode: this.form.value.docCode,
+      docDate: new Date().toLocaleDateString(),
+      docName: this.form.value.docName,
+      docType: this.form.value.docType,
+      address: this.form.value.address,
+      isSpecial: false,
+    }
+    this.localStorageService.addLs(obj);
     this.form.reset();
     this.rout.navigate(['/']);
   }

@@ -33,7 +33,6 @@
       <div *ngIf="form.get('author.post')?.errors?.['required']">
         <small class="form-text"><b>*Обязательное</b> для заполнения поле</small>
       </div>
-
     </div>
   </div>
   <div class="mb-3">
@@ -59,9 +58,11 @@
     </div>
   </div>
   <div class="mb-3 form-check form-group">
-    <input type="radio" class="form-check-input" id="exampleCheck1" name="docType" formControlName="docType" value="Заявление">
+    <input type="radio" class="form-check-input" id="exampleCheck1" name="docType" formControlName="docType"
+           value="Заявление">
     <label class="form-check-label me-5" for="exampleCheck1">Заявление</label>
-    <input type="radio" class="form-check-input" id="exampleCheck2" name="docType" formControlName="docType" value="Сертификат">
+    <input type="radio" class="form-check-input" id="exampleCheck2" name="docType" formControlName="docType"
+           value="Сертификат">
     <label class="form-check-label" for="exampleCheck2">Сертификат</label>
     <div class="form-text" *ngIf="form.get('docType')?.errors?.['required']">
       <small class="form-text"><b>*Обязательное</b> выбрать вид документа</small>

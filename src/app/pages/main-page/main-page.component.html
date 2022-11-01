@@ -2,8 +2,8 @@
   <h3 class="text-center mt-5 mb-5">Контроль работы юристов</h3>
   <div class="car-toggle col-12 p-0 d-flex flex-row">
     <input class="form-control col-6" type="text" placeholder="Поиск" aria-label="default input example">
-    <div class="col-3" [ngClass]="{active: category === 'sport'}" (click)="toggleCategory('sport')">Sport</div>
-    <div class="col-3" [ngClass]="{active: category === 'luxury'}" (click)="toggleCategory('luxury')">Luxury</div>
+    <div class="col-3" [ngClass]="{active: category === 'sport'}" (click)="toggleCategory('sport')">Все работы</div>
+    <div class="col-3" [ngClass]="{active: category === 'luxury'}" (click)="toggleCategory('luxury')">Не выполненные</div>
   </div>
   <table class="table">
     <thead class="table-dark">
@@ -29,15 +29,19 @@
         <quill-view-html content="{{user.docCode}}"></quill-view-html>
       </th>
       <td>
-        <p><b>ФИО:</b>{{user.author.fio}}</p>
-        <p><b>Логин:</b>{{user.author.account}}</p>
-        <p><b>Должность:</b>{{user.author.post}}</p>
-        <p><b>Работает над:</b>{{user.docName}}</p>
-        <p><b>Приступил к работе:</b>11.12.2021</p>
+        <p><b>ФИО:</b> {{user.author.fio}}</p>
+        <p><b>Логин:</b> {{user.author.account}}</p>
+        <p><b>Должность:</b> {{user.author.post}}</p>
+        <p><b>Работает над:</b> {{user.docName}}</p>
+        <p><b>Приступил к работе:</b> {{user.docDate}}</p>
       </td>
       <td>
-        <button class="btn btn-danger me-2"><i class="bi bi-calendar-x-fill"></i></button>
-        <button class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+        <button class="btn btn-danger me-2" (click)="remove(user.id)">
+          <i class="bi bi-calendar-x-fill"></i>
+        </button>
+        <button class="btn btn-success" [routerLink]="['/update', user.id]" (click)="edit(user.id)">
+          <i class="bi bi-pencil-square"></i>
+        </button>
       </td>
     </tr>
     </tbody>
