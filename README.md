@@ -1,7 +1,7 @@
 # Тестовый проект для контроля работы юристов
 Демо этого проекта можно посмотреть [здесь](https://gregtstu.github.io/test-hosting/)
 
-# Скачать архив 
+# Скачать архив
 Если нет желания клонировать проект через гит, чтобы не производить настройку **ngx-quill**, можно скачать данный проект с яндекс диска по [ссылке](https://disk.yandex.ru/d/YT4JJ09E48Ijvw)
 
 # Запуск проекта
@@ -10,20 +10,20 @@
 # Настройка проекта
 В проекте используется текстовый редактор **ngx-quill**. Для того чтобы проект работал корректно необходимо настроить **ngx-quill**.
 
-###### Устранение багов 
+### Устранение багов
 После запуска проекта в консоле появятся баги, который очень просто устраняются
 ![Баги](src/assets/img/error1.PNG)
 ***
-Данный импорт
-2 import QuillType, { Delta } from 'quill';
-меняем на
-2 import QuillType from 'quill';
-3 import Delta from "quill"
+Данный импорт\
+2 import QuillType, { Delta } from 'quill';\
+меняем на\
+2 import QuillType from 'quill';\
+3 import Delta from "quill";
 ***
-Данный импорт
-1 import diff from 'fast-diff';
-меняем на
-1 // @ts-ignore
+Данный импорт\
+1 import diff from 'fast-diff';\
+меняем на\
+1 // @ts-ignore\
 2 import diff from 'fast-diff';
 ***
 **После настройки ngx-quill можно запускать проект**.
