@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { UpdatePageComponent } from './pages/update-page/update-page.component';
-import { UserPageComponent } from './pages/user-page/user-page.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
@@ -20,7 +19,6 @@ import { SearchPipe } from './settings/search.pipe'
     MainPageComponent,
     CreatePageComponent,
     UpdatePageComponent,
-    UserPageComponent,
     MainLayoutComponent,
     SearchPipe
   ],
